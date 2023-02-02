@@ -14,7 +14,7 @@ class LithiumStorageInterface {
 
   Map<String, dynamic> toJson() {
     return {
-      'data': data?.map((e) => e.toJson()),
+      'data': data?.map((e) => e.toJson()).toList(),
       'config': config,
     };
   }

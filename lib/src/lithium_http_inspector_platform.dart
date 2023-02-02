@@ -1,6 +1,11 @@
+import 'package:http/http.dart' as http;
 import 'package:lithium_http_inspector/src/data/http_interface.dart';
 
 abstract class LithiumHttpInspectorPlatform {
+  http.BaseClient httpClient(http.Client client) {
+    throw UnimplementedError('httpClient() is not implemented yet');
+  }
+
   /// [find] will return all http request history that saved in local storage
   Future<List<HttpInterface>?> find() {
     throw UnimplementedError('findl() is not implemented yet.');

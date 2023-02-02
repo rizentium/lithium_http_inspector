@@ -22,6 +22,6 @@ void main() {
 
   test('File should be read correctly', () async {
     final expectation = LithiumStorageInterface(data: null, config: null);
-    identical(await lithiumStorage.readLog(), expectation);
+    identical(await lithiumStorage.readStorage(), expectation);
   });
 }
