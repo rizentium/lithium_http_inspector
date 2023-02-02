@@ -11,12 +11,18 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Lithium HTTP Inspector
+
+Lithium is flutter package that used for HTTP Inspector which helps debugging http requests. It catches and stores http requests and responses, which can be viewed via simple UI.
+
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+❌ HTTP call Request and Response detail  
+❌ Ready to use Inspector UI  
+❌ Save all HTTP call log  
+❌ Support for top used HTTP clients in Dart  
+❌ Search all HTTP call from log  
 
 ## Getting started
 
