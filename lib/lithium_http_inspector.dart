@@ -1,7 +1,7 @@
 library lithium_http_inspector;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+import './src/lithium_http_inspector_platform.dart';
+
+export './lithium_http_inspector.dart';
+
+part './src/lithium_http_inspector.dart';
