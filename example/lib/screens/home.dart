@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/lithium_http_inspector.dart';
+import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  final LithiumHttpInspector lithium;
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  const HomeScreen({super.key, required this.lithium});
 
-class _HomeScreenState extends State<HomeScreen> {
   void _onFloatingButtonClick(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const HttpInspectorScreen(),
+        builder: (context) => HttpInspectorScreen(lithium: lithium),
       ),
     );
   }
@@ -32,7 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             OutlinedButton(
-                onPressed: () {}, child: const Text('Call HTTP GET')),
+              onPressed: _onCallHTTPGetPressed,
+              child: const Text('Call HTTP GET'),
+            ),
           ],
         ),
       ),
@@ -42,5 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Icon(Icons.settings),
       ),
     );
+  }
+
+  Future<void> _onCallHTTPGetPressed() async {
+    try {
+      final uri = Uri.parse('https://pokeapi.co/api/v2/pokemon/ditto');
+      await lithium.httpClient(http.Client()).get(uri);
+    } catch (e) {
+      print(e);
+    }
   }
 }
