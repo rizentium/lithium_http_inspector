@@ -48,7 +48,9 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> _onCallHTTPGetPressed() async {
     try {
-      final uri = Uri.parse('https://pokeapi.co/api/v2/pokemon/ditto');
+      final uri = Uri.parse(
+        'https://pokeapi.co/api/v2/pokemon?limit=5&offset=0',
+      );
       await lithium.httpClient(http.Client()).get(uri);
     } catch (e) {
       inspect(e);

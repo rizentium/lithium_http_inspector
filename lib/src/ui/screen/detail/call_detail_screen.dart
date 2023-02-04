@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
 
@@ -19,6 +21,7 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    inspect(widget.response.request.uri?.queryParameters);
     return DefaultTabController(
       length: _items.length,
       child: Scaffold(
@@ -49,7 +52,11 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
           requestHeaders: widget.response.request.headers,
         ),
       ),
-      TabInterface(const Tab(text: 'Payload'), const DetailPayloadScreen()),
+      TabInterface(
+          const Tab(text: 'Payload'),
+          DetailPayloadScreen(
+            queryParameters: widget.response.request.uri?.queryParameters,
+          )),
       TabInterface(
         const Tab(text: 'Preview'),
         DetailHeadersScreen(

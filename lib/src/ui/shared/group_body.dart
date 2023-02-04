@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class GroupBody extends StatelessWidget {
   final Widget? child;
@@ -14,7 +14,14 @@ class GroupBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,
         ).copyWith(bottom: 8.0),
-        child: child,
+        child: child ??
+            const Text(
+              '(empty)',
+              style: TextStyle(
+                color: Colors.black54,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
       ),
     );
   }
