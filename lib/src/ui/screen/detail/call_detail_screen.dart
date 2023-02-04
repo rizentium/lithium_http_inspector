@@ -25,7 +25,6 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
-            isScrollable: true,
             tabs: _items.map((e) => e.tab).toList(),
             onTap: (value) => setState(() => _currentIndex = value),
           ),
@@ -55,58 +54,14 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
           DetailPayloadScreen(
             queryParameters: widget.response.request.uri?.queryParameters,
           )),
-      TabInterface(
-        const Tab(text: 'Preview'),
-        DetailHeadersScreen(
-          requestUrl: widget.response.request.uri.toString(),
-          requestMethod: widget.response.request.method,
-          responseStatusCode: widget.response.statusCode,
-          responseReasonPhrase: widget.response.reasonPhrase,
-          message: widget.response.message,
-          responseHeaders: widget.response.headers,
-          requestHeaders: widget.response.request.headers,
-        ),
-      ),
+      // TODO: add Preview Section
       TabInterface(
         const Tab(text: 'Response'),
         DetailResponseScreen(body: widget.response.body),
       ),
-      TabInterface(
-        const Tab(text: 'Initiator'),
-        DetailHeadersScreen(
-          requestUrl: widget.response.request.uri.toString(),
-          requestMethod: widget.response.request.method,
-          responseStatusCode: widget.response.statusCode,
-          responseReasonPhrase: widget.response.reasonPhrase,
-          message: widget.response.message,
-          responseHeaders: widget.response.headers,
-          requestHeaders: widget.response.request.headers,
-        ),
-      ),
-      TabInterface(
-        const Tab(text: 'Timing'),
-        DetailHeadersScreen(
-          requestUrl: widget.response.request.uri.toString(),
-          requestMethod: widget.response.request.method,
-          responseStatusCode: widget.response.statusCode,
-          responseReasonPhrase: widget.response.reasonPhrase,
-          message: widget.response.message,
-          responseHeaders: widget.response.headers,
-          requestHeaders: widget.response.request.headers,
-        ),
-      ),
-      TabInterface(
-        const Tab(text: 'Cookies'),
-        DetailHeadersScreen(
-          requestUrl: widget.response.request.uri.toString(),
-          requestMethod: widget.response.request.method,
-          responseStatusCode: widget.response.statusCode,
-          responseReasonPhrase: widget.response.reasonPhrase,
-          message: widget.response.message,
-          responseHeaders: widget.response.headers,
-          requestHeaders: widget.response.request.headers,
-        ),
-      ),
+      // TODO: add Initiator Section
+      // TODO: add Timing Section
+      // TODO: add Cookies Section
     ];
   }
 }
