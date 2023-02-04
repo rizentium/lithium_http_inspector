@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
+import 'package:lithium_http_inspector/src/ui/screen/detail_preview/detail_preview.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_response/detail_response.dart';
 
 import '../../../data/http_interface.dart';
@@ -50,11 +53,18 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
         ),
       ),
       TabInterface(
-          const Tab(text: 'Payload'),
-          DetailPayloadScreen(
-            queryParameters: widget.response.request.uri?.queryParameters,
-          )),
-      // TODO: add Preview Section
+        const Tab(text: 'Payload'),
+        DetailPayloadScreen(
+          queryParameters: widget.response.request.uri?.queryParameters,
+        ),
+      ),
+      TabInterface(
+        const Tab(text: 'Preview'),
+        DetailPreviewScreen(
+          body: widget.response.body,
+          contentType: widget.response.headers?['content-type'] ?? '',
+        ),
+      ),
       TabInterface(
         const Tab(text: 'Response'),
         DetailResponseScreen(body: widget.response.body),
