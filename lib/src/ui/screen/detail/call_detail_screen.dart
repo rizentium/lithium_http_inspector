@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
 
 import '../../../data/http_interface.dart';
 import '../../interface/tab_interface.dart';
 import '../detail_headers/detail_headers_screen.dart';
 
-class CallDetailScreen extends StatelessWidget {
+class CallDetailScreen extends StatefulWidget {
   final HttpResponseInterface response;
 
   const CallDetailScreen({super.key, required this.response});
+
+  @override
+  State<CallDetailScreen> createState() => _CallDetailScreenState();
+}
+
+class _CallDetailScreenState extends State<CallDetailScreen> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +26,11 @@ class CallDetailScreen extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: _items.map((e) => e.tab).toList(),
-            onTap: (value) {
-              print(value);
-            },
+            onTap: (value) => setState(() => _currentIndex = value),
           ),
           title: const Text('Response Detail'),
         ),
-        body: DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
-        ),
+        body: _items[_currentIndex].screen,
       ),
     );
   }
@@ -42,85 +40,74 @@ class CallDetailScreen extends StatelessWidget {
       TabInterface(
         const Tab(text: 'Headers'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
-      TabInterface(
-        const Tab(text: 'Payload'),
-        DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
-        ),
-      ),
+      TabInterface(const Tab(text: 'Payload'), const DetailPayloadScreen()),
       TabInterface(
         const Tab(text: 'Preview'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
       TabInterface(
         const Tab(text: 'Response'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
       TabInterface(
         const Tab(text: 'Initiator'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
       TabInterface(
         const Tab(text: 'Timing'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
       TabInterface(
         const Tab(text: 'Cookies'),
         DetailHeadersScreen(
-          requestUrl: response.request.uri.toString(),
-          requestMethod: response.request.method,
-          responseStatusCode: response.statusCode,
-          responseReasonPhrase: response.reasonPhrase,
-          message: response.message,
-          responseHeaders: response.headers,
-          requestHeaders: response.request.headers,
+          requestUrl: widget.response.request.uri.toString(),
+          requestMethod: widget.response.request.method,
+          responseStatusCode: widget.response.statusCode,
+          responseReasonPhrase: widget.response.reasonPhrase,
+          message: widget.response.message,
+          responseHeaders: widget.response.headers,
+          requestHeaders: widget.response.request.headers,
         ),
       ),
     ];

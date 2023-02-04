@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TabInterface {
   final Tab tab;
-  final Widget widget;
+  final Widget screen;
 
-  TabInterface(this.tab, this.widget);
+  TabInterface(this.tab, this.screen);
 }
