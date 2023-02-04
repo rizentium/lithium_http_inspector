@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/item_tile.dart';
+
 class GeneralWidget extends StatefulWidget {
   const GeneralWidget({
     super.key,
@@ -107,45 +109,16 @@ class _GeneralBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _GeneralItemTile(title: 'Request URL', value: requestUrl),
-          _GeneralItemTile(title: 'Request Method', value: requestMethod),
-          _GeneralItemTile(
+          ItemTile(title: 'Request URL', value: requestUrl),
+          ItemTile(title: 'Request Method', value: requestMethod),
+          ItemTile(
             title: 'Status Code',
             value: responseStatusCode?.toString(),
           ),
-          _GeneralItemTile(title: 'Reason Phrase', value: responseReasonPhrase),
+          ItemTile(title: 'Reason Phrase', value: responseReasonPhrase),
           // TODO: add remote address and referrer policy
-          _GeneralItemTile(title: 'Message', value: message),
-        ],
-      ),
-    );
-  }
-}
-
-class _GeneralItemTile extends StatelessWidget {
-  final String title;
-  final String? value;
-
-  const _GeneralItemTile({required this.title, this.value});
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: '$title: ',
-        style: DefaultTextStyle.of(context).style.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.black54,
-            ),
-        children: <TextSpan>[
-          TextSpan(
-            text: value.toString(),
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-              color: value == null ? Colors.black54 : Colors.black,
-              height: 1.25,
-              fontStyle: value == null ? FontStyle.italic : null,
-            ),
-          ),
+          ItemTile(title: 'Message', value: message),
+          const SizedBox(height: 8),
         ],
       ),
     );

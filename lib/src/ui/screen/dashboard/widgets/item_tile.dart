@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/http_interface.dart';
+import '../../../../data/http_interface.dart';
 
-class ItemTile extends StatelessWidget {
+class BodyItemTile extends StatelessWidget {
   final HttpResponseInterface response;
   final void Function()? onTap;
 
-  const ItemTile({super.key, required this.response, this.onTap});
+  const BodyItemTile({super.key, required this.response, this.onTap});
 
   @override
   Widget build(BuildContext context) {

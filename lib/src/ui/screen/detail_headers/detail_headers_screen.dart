@@ -38,12 +38,12 @@ class DetailHeadersScreen extends StatelessWidget {
           responseReasonPhrase: responseReasonPhrase,
           message: message,
         ),
-        const Divider(),
+        const Divider(height: 0),
         HeadersWidget(
           title: 'Response Headers',
           items: responseHeaders,
         ),
-        const Divider(),
+        const Divider(height: 0),
         HeadersWidget(
           title: 'Request Headers',
           items: requestHeaders,

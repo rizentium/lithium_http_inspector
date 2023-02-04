@@ -10,6 +10,6 @@ import 'src/client/lithium_http_client.dart';
 import 'src/data/http_interface.dart';
 
 export './lithium_http_inspector.dart';
-export 'src/screen/dashboard/http_inspector_screen.dart';
+export 'src/ui/screen/dashboard/http_inspector_screen.dart';
 
 part './src/lithium_http_inspector.dart';

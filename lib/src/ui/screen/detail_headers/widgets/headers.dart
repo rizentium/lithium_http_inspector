@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/item_tile.dart';
+
 class HeadersWidget extends StatefulWidget {
   const HeadersWidget({super.key, required this.title, this.items});
 
@@ -70,51 +72,30 @@ class _HeadersBody extends StatelessWidget {
 
   List<Widget> get children {
     return sortedKeys
-            ?.map(
-              (key) => RichText(
-                text: TextSpan(
-                  text: '$key: ',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: items?[key],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black,
-                        height: 1.25,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            ?.map((key) => ItemTile(title: key, value: items?[key]))
             .toList() ??
         [];
   }
 
   @override
   Widget build(BuildContext context) {
-    if (items == null || items?.isEmpty == true) {
-      return const Padding(
-        padding: EdgeInsets.only(left: 16.0, bottom: 16.0),
-        child: Text(
-          '(empty)',
-          style: TextStyle(
-            color: Colors.black54,
-            fontStyle: FontStyle.italic,
-          ),
-        ),
-      );
-    }
+    final isEmpty = items == null || items?.isEmpty == true;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0).copyWith(bottom: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: children,
+        children: [
+          if (isEmpty)
+            const Text(
+              '(empty)',
+              style: TextStyle(
+                color: Colors.black54,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          if (!isEmpty) ...children,
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../lithium_http_inspector.dart';
-import '../../../data/http_interface.dart';
+import '../../../../../lithium_http_inspector.dart';
+import '../../../../data/http_interface.dart';
 import '../../detail/call_detail_screen.dart';
 import 'item_tile.dart';
 
@@ -27,7 +27,7 @@ class ScreenBody extends StatelessWidget {
             itemBuilder: (context, index) {
               final response = snapshot.data![index];
 
-              return ItemTile(
+              return BodyItemTile(
                 response: response,
                 onTap: () => _itemOnTap(context, response),
               );
