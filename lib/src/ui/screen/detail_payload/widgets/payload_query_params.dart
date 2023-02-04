@@ -22,7 +22,7 @@ class _PayloadQueryParamsState extends State<PayloadQueryParams> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GroupTitle(
-          title: 'Query String Parameters',
+          title: 'Query String Parameters (${items.length})',
           isVisible: _isVisible,
           onTap: () => setState(() => _isVisible = !_isVisible),
         ),
