@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lithium_http_inspector/src/screen/widgets/screen_body.dart';
+import 'package:lithium_http_inspector/src/screen/dashboard/widgets/screen_body.dart';
 
-import '../../lithium_http_inspector.dart';
+import '../../../lithium_http_inspector.dart';
 
 class HttpInspectorScreen extends StatelessWidget {
   final LithiumHttpInspector lithium;

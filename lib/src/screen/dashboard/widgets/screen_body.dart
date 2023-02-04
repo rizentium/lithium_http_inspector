@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../lithium_http_inspector.dart';
-import '../../data/http_interface.dart';
+import '../../../../lithium_http_inspector.dart';
+import '../../../data/http_interface.dart';
+import '../../detail/call_detail_screen.dart';
 import 'item_tile.dart';
 
 class ScreenBody extends StatelessWidget {
@@ -24,8 +25,11 @@ class ScreenBody extends StatelessWidget {
             snapshot.hasData) {
           return ListView.builder(
             itemBuilder: (context, index) {
+              final response = snapshot.data![index];
+
               return ItemTile(
-                response: snapshot.data![index],
+                response: response,
+                onTap: () => _itemOnTap(context, response),
               );
             },
             itemCount: snapshot.data?.length,
@@ -36,6 +40,15 @@ class ScreenBody extends StatelessWidget {
           child: Text('Data is empty'),
         );
       },
+    );
+  }
+
+  void _itemOnTap(BuildContext context, HttpResponseInterface response) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CallDetailScreen(response: response),
+      ),
     );
   }
 }

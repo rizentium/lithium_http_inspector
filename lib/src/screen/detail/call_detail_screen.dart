@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../data/http_interface.dart';
+
 class CallDetailScreen extends StatelessWidget {
-  const CallDetailScreen({super.key});
+  final HttpResponseInterface response;
+
+  const CallDetailScreen({super.key, required this.response});
 
   @override
   Widget build(BuildContext context) {
