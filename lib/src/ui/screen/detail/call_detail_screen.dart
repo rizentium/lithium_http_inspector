@@ -28,7 +28,7 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
             tabs: _items.map((e) => e.tab).toList(),
             onTap: (value) => setState(() => _currentIndex = value),
           ),
-          title: const Text('Response Detail'),
+          title: const Text('HTTP Call Detail'),
         ),
         body: _items[_currentIndex].screen,
       ),
