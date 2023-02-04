@@ -82,6 +82,7 @@ class LithiumHttpClient extends BaseClient {
         isRedirect: response.isRedirect,
         persistentConnection: response.persistentConnection,
         reasonPhrase: response.reasonPhrase,
+        statusCode: response.statusCode,
       );
       _storage.writeLog(log);
       return response;
