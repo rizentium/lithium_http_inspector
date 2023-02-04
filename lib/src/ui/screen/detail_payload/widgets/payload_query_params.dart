@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lithium_http_inspector/src/ui/shared/item_tile.dart';
 
 import '../../../shared/group_body.dart';
 import '../../../shared/group_title.dart';
+import '../../../shared/item_tile.dart';
 
 class PayloadQueryParams extends StatefulWidget {
   final Map<String, String>? queryParameters;

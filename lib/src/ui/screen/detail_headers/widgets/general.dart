@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lithium_http_inspector/src/ui/shared/group_body.dart';
-import 'package:lithium_http_inspector/src/ui/shared/group_title.dart';
 
+import '../../../shared/group_body.dart';
+import '../../../shared/group_title.dart';
 import '../../../shared/item_tile.dart';
 
 class GeneralWidget extends StatefulWidget {

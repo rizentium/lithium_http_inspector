@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
-import 'package:lithium_http_inspector/src/ui/screen/detail_preview/detail_preview.dart';
-import 'package:lithium_http_inspector/src/ui/screen/detail_response/detail_response.dart';
 
 import '../../../data/http_interface.dart';
 import '../../interface/tab_interface.dart';
 import '../detail_headers/detail_headers_screen.dart';
+import '../detail_payload/detail_payload.dart';
+import '../detail_preview/detail_preview.dart';
+import '../detail_response/detail_response.dart';
 
 class CallDetailScreen extends StatefulWidget {
   final HttpResponseInterface response;

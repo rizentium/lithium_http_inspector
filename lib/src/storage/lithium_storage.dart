@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:lithium_http_inspector/src/data/http_interface.dart';
-
+import '../data/http_interface.dart';
 import 'lithium_storage_interface.dart';
 
 class LithiumStorage {

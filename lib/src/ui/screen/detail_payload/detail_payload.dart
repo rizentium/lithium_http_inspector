@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:lithium_http_inspector/src/ui/screen/detail_payload/widgets/payload_query_params.dart';
+
+import 'widgets/payload_query_params.dart';
 
 class DetailPayloadScreen extends StatelessWidget {
   final Map<String, String>? queryParameters;

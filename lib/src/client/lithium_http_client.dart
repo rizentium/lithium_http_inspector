@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:lithium_http_inspector/src/data/http_interface.dart';
-import 'package:lithium_http_inspector/src/storage/lithium_storage.dart';
+
+import '../data/http_interface.dart';
+import '../storage/lithium_storage.dart';
 
 class LithiumHttpClient extends BaseClient {
   final Client _inner;

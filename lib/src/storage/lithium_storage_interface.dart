@@ -1,4 +1,4 @@
-import 'package:lithium_http_inspector/src/data/http_interface.dart';
+import '../data/http_interface.dart';
 
 class LithiumStorageInterface {
   final List<HttpResponseInterface>? data;

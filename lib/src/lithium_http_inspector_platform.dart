@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
-import 'package:lithium_http_inspector/src/data/http_interface.dart';
+
+import 'data/http_interface.dart';
 
 abstract class LithiumHttpInspectorPlatform {
   http.BaseClient httpClient(http.Client client) {
