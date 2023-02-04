@@ -1,9 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class ContentType {
-  static String json = 'application/json; charset=utf-8';
+  static String json = 'application/json';
+  static String html = 'text/html';
+
+  static List<String> supported() {
+    return [json, html];
+  }
 }
 
 class DetailPreviewScreen extends StatelessWidget {
@@ -16,13 +22,9 @@ class DetailPreviewScreen extends StatelessWidget {
     this.body,
   });
 
-  List<String> get supportedContentType {
-    return [ContentType.json];
-  }
-
   bool get _isContentTypeSupported {
-    for (var e in supportedContentType) {
-      if (e == contentType) {
+    for (var e in ContentType.supported()) {
+      if (contentType.contains(e)) {
         return true;
       }
     }
@@ -74,8 +76,11 @@ class DetailPreviewScreen extends StatelessWidget {
 
   Widget _viewer() {
     try {
-      if (contentType == ContentType.json) {
+      if (contentType.contains(ContentType.json)) {
         return Text(_jsonViewer(body ?? ''));
+      }
+      if (contentType.contains(ContentType.html)) {
+        return Html(data: body);
       }
       return const Text('Preview Unsupported for this Content Type');
     } catch (e) {

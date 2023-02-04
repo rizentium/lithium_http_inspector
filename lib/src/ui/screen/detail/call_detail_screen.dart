@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_preview/detail_preview.dart';
