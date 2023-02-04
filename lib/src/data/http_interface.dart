@@ -54,6 +54,8 @@ class HttpRequestInterface {
 }
 
 class HttpResponseInterface {
+  final Uint8List? bodyBytes;
+  final String? body;
   final int? contentLength;
   final Map<String, dynamic>? headers;
   final bool? isRedirect;
@@ -64,6 +66,8 @@ class HttpResponseInterface {
   final String? message;
 
   HttpResponseInterface({
+    this.bodyBytes,
+    this.body,
     this.contentLength,
     this.headers,
     this.isRedirect,
@@ -75,7 +79,11 @@ class HttpResponseInterface {
   });
 
   HttpResponseInterface.fromJson(Map<String, dynamic> json)
-      : contentLength = json['contentLength'],
+      : bodyBytes = Uint8List.fromList(
+          List<int>.from(json['bodyBytes'] ?? []),
+        ),
+        body = json['body'],
+        contentLength = json['contentLength'],
         headers = json['headers'],
         isRedirect = json['isRedirect'],
         persistentConnection = json['isPersistentConnection'],
@@ -85,6 +93,8 @@ class HttpResponseInterface {
         message = json['message'];
 
   Map<String, dynamic> toJson() => {
+        'bodyBytes': bodyBytes,
+        'body': body,
         'contentLength': contentLength,
         'headers': headers,
         'isRedirect': isRedirect,
@@ -94,4 +104,30 @@ class HttpResponseInterface {
         'statusCode': statusCode,
         'message': message,
       };
+
+  HttpResponseInterface copyWith({
+    Uint8List? bodyBytes,
+    String? body,
+    int? contentLength,
+    Map<String, dynamic>? headers,
+    bool? isRedirect,
+    bool? persistentConnection,
+    String? reasonPhrase,
+    HttpRequestInterface? request,
+    int? statusCode,
+    String? message,
+  }) {
+    return HttpResponseInterface(
+      bodyBytes: bodyBytes ?? this.bodyBytes,
+      body: body ?? this.body,
+      contentLength: contentLength ?? this.contentLength,
+      headers: headers ?? this.headers,
+      isRedirect: isRedirect ?? this.isRedirect,
+      persistentConnection: persistentConnection ?? this.persistentConnection,
+      reasonPhrase: reasonPhrase ?? this.reasonPhrase,
+      request: request ?? this.request,
+      statusCode: statusCode ?? this.statusCode,
+      message: message ?? this.message,
+    );
+  }
 }
