@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/src/ui/screen/detail_payload/detail_payload.dart';
+import 'package:lithium_http_inspector/src/ui/screen/detail_response/detail_response.dart';
 
 import '../../../data/http_interface.dart';
 import '../../interface/tab_interface.dart';
@@ -68,15 +69,7 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
       ),
       TabInterface(
         const Tab(text: 'Response'),
-        DetailHeadersScreen(
-          requestUrl: widget.response.request.uri.toString(),
-          requestMethod: widget.response.request.method,
-          responseStatusCode: widget.response.statusCode,
-          responseReasonPhrase: widget.response.reasonPhrase,
-          message: widget.response.message,
-          responseHeaders: widget.response.headers,
-          requestHeaders: widget.response.request.headers,
-        ),
+        DetailResponseScreen(body: widget.response.body),
       ),
       TabInterface(
         const Tab(text: 'Initiator'),
