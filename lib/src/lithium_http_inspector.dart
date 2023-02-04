@@ -23,7 +23,7 @@ class LithiumHttpInspector extends LithiumHttpInspectorPlatform {
   }
 
   @override
-  Future<List<HttpInterface>?> find() async {
+  Future<List<HttpResponseInterface>?> find() async {
     final storage = await _storage.readStorage();
     return storage?.data;
   }

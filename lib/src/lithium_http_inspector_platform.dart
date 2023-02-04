@@ -7,27 +7,27 @@ abstract class LithiumHttpInspectorPlatform {
   }
 
   /// [find] will return all http request history that saved in local storage
-  Future<List<HttpInterface>?> find() {
+  Future<List<HttpResponseInterface>?> find() {
     throw UnimplementedError('findl() is not implemented yet.');
   }
 
   /// [findById] will return a request histroy based on request id
-  Future<HttpInterface?> findById(String id) {
+  Future<HttpResponseInterface?> findById(String id) {
     throw UnimplementedError('findById() is not implemented yet.');
   }
 
   /// [insert] will create new http request histroy to local storage
-  Future<bool> insert(HttpInterface data) {
+  Future<bool> insert(HttpResponseInterface data) {
     throw UnimplementedError('insert() is not implemented yet.');
   }
 
   /// Intercept http request
-  Future<bool> intercept(HttpInterface data) {
+  Future<bool> intercept(HttpResponseInterface data) {
     throw UnimplementedError('intercept() is not implemented yet.');
   }
 
   /// Mock http request
-  Future<bool> mock(HttpInterface data) {
+  Future<bool> mock(HttpResponseInterface data) {
     throw UnimplementedError('intercept() is not implemented yet.');
   }
 

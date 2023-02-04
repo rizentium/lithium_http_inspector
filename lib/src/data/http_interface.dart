@@ -1,61 +1,97 @@
-class HttpInterface {
-  final HttpRequestInterface request;
-  final HttpResponseInterface response;
-
-  HttpInterface({required this.request, required this.response});
-
-  HttpInterface.fromJson(Map<String, dynamic> json)
-      : request = HttpRequestInterface.fromJson(json['request']),
-        response = HttpResponseInterface.fromJson(json['response']);
-
-  Map<String, dynamic> toJson() => {
-        'request': request.toJson(),
-        'response': response.toJson(),
-      };
-}
+import 'dart:typed_data';
 
 class HttpRequestInterface {
+  final Map<String, dynamic> headers;
   final String method;
   final Uri? uri;
-  final Map<String, dynamic> headers;
+  final String? body;
+  final Uint8List? bodyBytes;
+  final Map<String, String>? bodyFields;
+  final int? contentLength;
+  final bool finalized;
+  final int maxRedirects;
+  final bool persistentConnection;
 
   HttpRequestInterface({
+    required this.headers,
     required this.method,
     this.uri,
-    required this.headers,
+    this.body,
+    this.bodyBytes,
+    this.bodyFields,
+    this.contentLength,
+    required this.finalized,
+    required this.maxRedirects,
+    required this.persistentConnection,
   });
 
   HttpRequestInterface.fromJson(Map<String, dynamic> json)
-      : method = json['method'],
+      : headers = json['headers'],
+        method = json['method'],
         uri = json['uri'] != null ? Uri.tryParse(json['uri']) : null,
-        headers = json['headers'];
+        body = json['body'],
+        bodyBytes = Uint8List.fromList(
+          List<int>.from(json['bodyBytes'] ?? []),
+        ),
+        bodyFields = json['bodyFields'],
+        contentLength = json['contentLength'],
+        finalized = json['finalized'],
+        maxRedirects = json['maxRedirects'],
+        persistentConnection = json['persistentConnection'];
 
   Map<String, dynamic> toJson() => {
         'method': method,
         'uri': uri?.toString(),
         'headers': headers,
+        'body': body,
+        'bodyBytes': bodyBytes,
+        'bodyFields': bodyFields,
+        'contentLength': contentLength,
+        'finalized': finalized,
+        'maxRedirects': maxRedirects,
+        'persistentConnection': persistentConnection,
       };
 }
 
 class HttpResponseInterface {
+  final int? contentLength;
+  final Map<String, dynamic>? headers;
+  final bool? isRedirect;
+  final bool? isPersistentConnection;
+  final String? reasonPhrase;
+  final HttpRequestInterface request;
+  final int? statusCode;
   final String? message;
-  final Uri? uri;
-  final String? status;
 
   HttpResponseInterface({
+    this.contentLength,
+    this.headers,
+    this.isRedirect,
+    this.isPersistentConnection,
+    this.reasonPhrase,
+    required this.request,
+    this.statusCode,
     this.message,
-    this.uri,
-    this.status,
   });
 
   HttpResponseInterface.fromJson(Map<String, dynamic> json)
-      : message = json['message'],
-        uri = Uri.tryParse(json['uri']),
-        status = json['status'];
+      : contentLength = json['contentLength'],
+        headers = json['headers'],
+        isRedirect = json['isRedirect'],
+        isPersistentConnection = json['isPersistentConnection'],
+        reasonPhrase = json['reasonPhrase'],
+        request = HttpRequestInterface.fromJson(json['request']),
+        statusCode = json['statusCode'],
+        message = json['message'];
 
   Map<String, dynamic> toJson() => {
+        'contentLength': contentLength,
+        'headers': headers,
+        'isRedirect': isRedirect,
+        'isPersistentConnection': isPersistentConnection,
+        'reasonPhrase': reasonPhrase,
+        'request': request,
+        'statusCode': statusCode,
         'message': message,
-        'uri': uri?.toString(),
-        'status': status,
       };
 }

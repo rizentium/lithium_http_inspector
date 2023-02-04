@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../../lithium_http_inspector.dart';
@@ -11,7 +13,7 @@ class ScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<HttpInterface>?>(
+    return FutureBuilder<List<HttpResponseInterface>?>(
       future: lithium.find(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -25,7 +27,7 @@ class ScreenBody extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (context, index) {
               return ItemTile(
-                request: snapshot.data![index],
+                response: snapshot.data![index],
               );
             },
             itemCount: snapshot.data?.length,

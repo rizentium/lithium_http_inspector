@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../data/http_interface.dart';
 
 class ItemTile extends StatelessWidget {
-  final HttpInterface request;
+  final HttpResponseInterface response;
 
-  const ItemTile({super.key, required this.request});
+  const ItemTile({super.key, required this.response});
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,13 @@ class ItemTile extends StatelessWidget {
                 spacing: 4.0,
                 children: [
                   Text(
-                    request.request.method,
+                    response.request.method,
                     style: const TextStyle(
                       color: Colors.green,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(request.request.uri?.path ?? 'Path not found'),
+                  Text(response.request.uri?.path ?? 'Path not found'),
                 ],
               ),
               const SizedBox(height: 4),
@@ -40,9 +40,9 @@ class ItemTile extends StatelessWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 4.0,
                 children: [
-                  _OriginWidget(scheme: request.request.uri?.scheme),
+                  _OriginWidget(scheme: response.request.uri?.scheme),
                   Text(
-                    request.request.uri?.origin ?? 'Origin not found',
+                    response.request.uri?.origin ?? 'Origin not found',
                     style: const TextStyle(
                       fontSize: 12.0,
                     ),
@@ -51,7 +51,7 @@ class ItemTile extends StatelessWidget {
               ),
             ],
           ),
-          _StatusWidget(status: request.response.status ?? ''),
+          _StatusWidget(status: response.reasonPhrase ?? ''),
         ],
       ),
     );
