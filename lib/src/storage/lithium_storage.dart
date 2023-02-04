@@ -33,4 +33,8 @@ class LithiumStorage {
       flush: true,
     );
   }
+
+  Future<FileSystemEntity> clear() {
+    return _localFile.delete();
+  }
 }

@@ -27,4 +27,12 @@ class LithiumHttpInspector extends LithiumHttpInspectorPlatform {
     final storage = await _storage.readStorage();
     return storage?.data;
   }
+
+  @override
+  Future<bool> destroy() async {
+    final status = await _storage.clear();
+    final exist = await status.exists();
+
+    return !exist;
+  }
 }

@@ -14,9 +14,10 @@ class HttpInspectorScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Lithium Inspector'),
         actions: [
-          TextButton(
-            onPressed: () {},
-            child: const Text('Clear'),
+          IconButton(
+            icon: const Icon(Icons.delete),
+            // TODO: add rebuild ScreenBody on destroy
+            onPressed: () => lithium.destroy(),
           ),
         ],
       ),
