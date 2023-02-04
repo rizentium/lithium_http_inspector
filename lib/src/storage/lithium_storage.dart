@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:lithium_http_inspector/src/data/http_interface.dart';
@@ -16,7 +15,6 @@ class LithiumStorage {
       final contents = await _localFile.readAsString();
       return LithiumStorageInterface.fromJson(jsonDecode(contents));
     } catch (e) {
-      print(e);
       return null;
     }
   }

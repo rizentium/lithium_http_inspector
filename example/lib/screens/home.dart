@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:lithium_http_inspector/lithium_http_inspector.dart';
 import 'package:http/http.dart' as http;
@@ -49,7 +51,7 @@ class HomeScreen extends StatelessWidget {
       final uri = Uri.parse('https://pokeapi.co/api/v2/pokemon/ditto');
       await lithium.httpClient(http.Client()).get(uri);
     } catch (e) {
-      print(e);
+      inspect(e);
     }
   }
 }

@@ -57,7 +57,7 @@ class HttpResponseInterface {
   final int? contentLength;
   final Map<String, dynamic>? headers;
   final bool? isRedirect;
-  final bool? isPersistentConnection;
+  final bool? persistentConnection;
   final String? reasonPhrase;
   final HttpRequestInterface request;
   final int? statusCode;
@@ -67,7 +67,7 @@ class HttpResponseInterface {
     this.contentLength,
     this.headers,
     this.isRedirect,
-    this.isPersistentConnection,
+    this.persistentConnection,
     this.reasonPhrase,
     required this.request,
     this.statusCode,
@@ -78,7 +78,7 @@ class HttpResponseInterface {
       : contentLength = json['contentLength'],
         headers = json['headers'],
         isRedirect = json['isRedirect'],
-        isPersistentConnection = json['isPersistentConnection'],
+        persistentConnection = json['isPersistentConnection'],
         reasonPhrase = json['reasonPhrase'],
         request = HttpRequestInterface.fromJson(json['request']),
         statusCode = json['statusCode'],
@@ -88,7 +88,7 @@ class HttpResponseInterface {
         'contentLength': contentLength,
         'headers': headers,
         'isRedirect': isRedirect,
-        'isPersistentConnection': isPersistentConnection,
+        'isPersistentConnection': persistentConnection,
         'reasonPhrase': reasonPhrase,
         'request': request,
         'statusCode': statusCode,

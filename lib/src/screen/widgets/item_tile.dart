@@ -51,7 +51,9 @@ class ItemTile extends StatelessWidget {
               ),
             ],
           ),
-          _StatusWidget(status: response.reasonPhrase ?? ''),
+          _StatusWidget(
+            status: response.statusCode?.toString() ?? response.reasonPhrase,
+          ),
         ],
       ),
     );
@@ -73,17 +75,26 @@ class _OriginWidget extends StatelessWidget {
 }
 
 class _StatusWidget extends StatelessWidget {
-  final String status;
+  final String? status;
 
   const _StatusWidget({required this.status});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      status,
-      style: const TextStyle(
-        color: Colors.red,
+      status ?? '',
+      style: TextStyle(
+        color: _statusColor,
       ),
     );
+  }
+
+  Color get _statusColor {
+    final parsed = int.tryParse(status ?? '') ?? 0;
+
+    if (parsed >= 200 && parsed < 300) {
+      return Colors.green;
+    }
+    return Colors.red;
   }
 }

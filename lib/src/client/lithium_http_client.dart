@@ -12,6 +12,30 @@ class LithiumHttpClient extends http.BaseClient {
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     try {
       final response = await _inner.send(request);
+
+      if (request is http.Request) {
+        final log = HttpResponseInterface(
+          contentLength: response.contentLength,
+          headers: response.headers,
+          isRedirect: response.isRedirect,
+          persistentConnection: response.persistentConnection,
+          reasonPhrase: response.reasonPhrase,
+          request: HttpRequestInterface(
+            headers: request.headers,
+            method: request.method,
+            uri: request.url,
+            body: request.body,
+            bodyBytes: request.bodyBytes,
+            contentLength: request.contentLength,
+            finalized: request.finalized,
+            maxRedirects: request.maxRedirects,
+            persistentConnection: request.persistentConnection,
+          ),
+          statusCode: response.statusCode,
+        );
+        await _storage.writeLog(log);
+      }
+
       return response;
     } on http.ClientException catch (e) {
       if (request is http.Request) {
