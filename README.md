@@ -23,6 +23,7 @@ Lithium is flutter package that used for HTTP Inspector which helps debugging ht
 ❌ Save all HTTP call log  
 ❌ Support for top used HTTP clients in Dart  
 ❌ Search all HTTP call from log  
+❌ Mock response data
 
 ## Requirements
 
